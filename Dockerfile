@@ -1,5 +1,5 @@
 FROM python:3.6.8-alpine3.8 as py-ea
-ARG ELASTALERT_VERSION=v0.2.1
+ARG ELASTALERT_VERSION=v0.2.2
 ENV ELASTALERT_VERSION=${ELASTALERT_VERSION}
 ARG ELASTALERT_URL=https://github.com/Yelp/elastalert/archive/$ELASTALERT_VERSION.zip
 ENV ELASTALERT_URL=${ELASTALERT_URL}
@@ -41,13 +41,12 @@ COPY elastalert_modules/ /opt/elastalert/elastalert_modules
 RUN mkdir -p /opt/elastalert/rules/ /opt/elastalert/server_data/tests/ \
     && chown -R node:node /opt
 
-USER node
-
 EXPOSE 3030
 
 WORKDIR /opt/elastalert
 
 RUN pip3 install -r requirements.txt --user
+RUN pip3 install elastalert
 
 WORKDIR /opt/elastalert-server
 
