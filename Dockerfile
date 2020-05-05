@@ -47,6 +47,7 @@ WORKDIR /opt/elastalert
 
 RUN pip3 install -r requirements.txt --user
 RUN pip3 install elastalert
+RUN sed -i '1534s/+= 1/= 0/g' /opt/elastalert/elastalert/elastalert.py
 
 WORKDIR /opt/elastalert-server
 
