@@ -10,7 +10,6 @@ server-data/
 
 ## Ignore custom config files
 config/config.dev.json
-config/config.json
 
 ## File-based project format:
 *.iws
